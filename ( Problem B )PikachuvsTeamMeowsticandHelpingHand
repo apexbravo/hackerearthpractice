@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main()
+{
+	 long long  n,k,i,j;
+
+	scanf("%lu%lu",&n,&k);
+	  long long  a[n];
+
+	 for(i=0;i<n;scanf("%lu",&a[i++]));
+	 if(k>100) k=100;
+
+	 
+
+	 while(k--)
+	 {
+		 for(i=n-1;i>0;i--)
+		 {
+			 
+			 a[i]=a[i]|a[i-1];
+		 }
+	 }
+
+	 for(i=0;i<n;printf("%lu ",a[i++]));
+	 
+	 
+}
