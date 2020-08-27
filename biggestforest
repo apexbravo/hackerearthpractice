@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+
+char arr[1000][1000];
+int cou=0,ans=0;
+
+void bigfor(int i,int j,int n)
+{
+	//if the current cell is out of range or is not a tree we backtrack
+	if(i<0||i>=n||j<0||j>=n||arr[i][j]!='T')
+	return;
+
+	cou++; // increasing the number of trees visited 
+	arr[i][j]='Y'; // make the current cell W so that we wont count it again
+
+	// check all the sides of the current cell 
+	bigfor(i+1,j,n);
+	bigfor(i,j+1,n);
+	bigfor(i-1,j,n);
+	bigfor(i,j-1,n);
+}
+
+int main()
+{
+	int n,i,j;
+	scanf("%d",&n);
+
+	for(i=0;i<n;i++)
+		for(j=0;j<n;j++)
+			scanf(" %c",&arr[i][j]);
+
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+
+			if(arr[i][j]=='T')
+			{
+				cou=0; // initialized for the new forest
+				bigfor(i,j,n);
+			
+			if(cou>ans) // if the count of the current forest is bigger than the one we already had make that one the biggest
+			{
+				ans=cou;
+			}
+			}
+		}
+	}
+
+	printf("%d",ans);
+
+	
+}
