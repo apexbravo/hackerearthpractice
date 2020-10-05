@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <string.h>
+void metoo( char a[], long long int n)
+{
+	int i ,flag=0,j,je;
+	for(i=0;i<n;i++)
+	{
+		
+			if(a[i+1]-a[i]>1||a[i+1]==a[i])
+			{
+				flag=1;
+				break;
+			}
+		
+	}
+	
+	if(flag)
+	printf("NO\n");
+	else
+	printf("YES\n");
+
+}
+int main()
+{
+	long long int t,n,i,j;
+	scanf("%lld",&t);
+
+	while(t--)
+	{
+		char arr[6],min;
+		scanf("%s",arr);
+		
+		int len = strlen(arr);
+		for(i=0;i<len;i++)
+		{
+			for(j=i+1;j<len;j++)
+			{
+				if(arr[i]>arr[j])
+				{
+					min=arr[i];
+					arr[i]=arr[j];
+					arr[j]=min;
+		
+				}
+
+			}
+		
+		}
+		
+		metoo(arr,len);
+		
+
+	
+	}
+}
