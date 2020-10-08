@@ -1,0 +1,53 @@
+
+#include <stdio.h>
+
+void metoo(int arr[],int arr1[],int n)
+{
+	int i,count=0,min,j;
+		for(i=0;i<n;)
+	{
+		if(arr[i]==arr1[i]) 
+		//Check if the current values match and only when they match you can go to the next pair of numbers of numbers
+		{
+			
+			i++;
+		
+		}
+		else
+		{
+			count++; 
+			min=arr[i];  // store the current element in a variable so that we can put it to the back of the array;
+			for(j=i;j<n;j++)
+			{
+				arr[j]=arr[j+1]; // shift all the array numbers to the left side e.g 3 2 1 becomes 2 1 0;
+			}
+			arr[n-1]=min; // and  put current element to the back of the array
+			
+		
+	}
+	
+	}
+
+	printf("%d",count+n); //Since count was only incrementing when we had switched the array numbers we then add it to the number of elements of the array.
+}
+
+int main()
+{
+	int n,i;
+	scanf("%d",&n);
+	int arr[n],arr1[n];
+
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&arr[i]);
+	}
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&arr1[i]);
+	}
+
+	metoo(arr,arr1,n);
+
+	
+}
+
